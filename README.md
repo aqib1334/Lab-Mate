@@ -1,4 +1,3 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a2239c62-74c8-4192-93e0-3a772a18de11" />
 # 🧪 Lab-Mate — AI Protocol Auditor
 
 AI-powered web app auditing biotechnology lab protocols 
