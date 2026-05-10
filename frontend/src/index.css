@@ -1,0 +1,366 @@
+/* ── Reset ───────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+
+/* ── Base ────────────────────────────────────────────────────────────────────── */
+body {
+  background: #0a0f1e;
+  color: #d5e3ff;
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+}
+
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1e2d5a; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #1a5cff; }
+
+
+/* ── Material Icons ──────────────────────────────────────────────────────────── */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* ── Keyframes ───────────────────────────────────────────────────────────────── */
+@keyframes scan {
+  0%   { top: -2px; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes scanH {
+  0%   { left: -2px; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes ping {
+  75%, 100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { border-color: rgba(255,77,106,0.4); box-shadow: 0 0 20px rgba(255,77,106,0.3); }
+  50% { border-color: rgba(255,77,106,0.8); box-shadow: 0 0 40px rgba(255,77,106,0.6); }
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 0 #ff4d6a, -2px 0 #00ff88; }
+  25% { text-shadow: -2px 0 #ff4d6a, 2px 0 #00ff88; }
+  50% { text-shadow: 0 0 #ff4d6a, 0 0 #00ff88; }
+  75% { text-shadow: 2px 0 #00ff88, -2px 0 #ff4d6a; }
+  100% { text-shadow: none; }
+}
+
+@keyframes scramble {
+  0% { opacity: 0.3; } 50% { opacity: 0.6; } 100% { opacity: 1; }
+}
+
+
+/* ── Utility classes ─────────────────────────────────────────────────────────── */
+.scan-v {
+  height: 2px; width: 100%;
+  background: linear-gradient(90deg, transparent, #1a5cff, transparent);
+  position: absolute; left: 0;
+  animation: scan 3s linear infinite;
+  pointer-events: none;
+}
+
+.scan-h {
+  width: 2px; height: 100%;
+  background: linear-gradient(180deg, transparent, #1a5cff, transparent);
+  position: absolute; top: 0;
+  animation: scanH 4s linear infinite;
+  pointer-events: none;
+}
+
+.float  { animation: float 3s ease-in-out infinite; }
+.pulse  { animation: pulse 2s ease-in-out infinite; }
+.spin   { animation: spin 0.8s linear infinite; }
+.ping   { animation: ping 1.2s cubic-bezier(0,0,0.2,1) infinite; }
+
+.neon-fail { animation: neon-pulse 1.5s ease-in-out infinite; }
+
+.glitch-text {
+  position: relative;
+  color: #d5e3ff;
+  animation: glitch 0.3s ease-in-out;
+}
+
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.08) 50%),
+              linear-gradient(90deg, rgba(255,0,0,0.02), rgba(0,255,0,0.01), rgba(0,0,255,0.02));
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 999;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  50% { opacity: 1; }
+  100% { opacity: 0.97; }
+}
+
+.s1 { animation: fadeUp 0.5s ease 0.05s both; }
+.s2 { animation: fadeUp 0.5s ease 0.15s both; }
+.s3 { animation: fadeUp 0.5s ease 0.25s both; }
+.s4 { animation: fadeUp 0.5s ease 0.35s both; }
+.s5 { animation: fadeUp 0.5s ease 0.45s both; }
+.s6 { animation: fadeUp 0.5s ease 0.55s both; }
+
+.slide-down { animation: slideDown 0.35s ease both; }
+
+.cyber-field {
+  position: relative;
+  background: #0a0f1e;
+  border: 1px solid #1e2d5a;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cyber-input,
+.cyber-select {
+  width: 100%;
+  background: transparent;
+  color: #d5e3ff;
+  border: none;
+  outline: none;
+  padding: 10px 12px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.cyber-input::placeholder {
+  color: #4a6fa5;
+}
+
+.cyber-select option {
+  background: #0a0f1e;
+  color: #d5e3ff;
+}
+
+.cyber-field .scan-v,
+.cyber-field .scan-h {
+  opacity: 0;
+  animation-play-state: paused;
+}
+
+.cyber-field:focus-within {
+  border-color: #1a5cff;
+  box-shadow: 0 0 18px rgba(26,92,255,0.2);
+}
+
+.cyber-field:focus-within .scan-v,
+.cyber-field:focus-within .scan-h {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+
+/* ── Cards ───────────────────────────────────────────────────────────────────── */
+.card {
+  background: #0d1428;
+  border: 1px solid #1e2d5a;
+  border-radius: 8px;
+}
+
+
+/* ── Buttons ─────────────────────────────────────────────────────────────────── */
+.btn-primary {
+  background: #1a5cff;
+  color: #fff;
+  border: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 0 20px rgba(26,92,255,0.25);
+}
+.btn-primary:hover { filter: brightness(1.15); }
+
+.btn-ghost {
+  background: rgba(26,92,255,0.06);
+  border: 1px solid rgba(26,92,255,0.3);
+  color: #1a5cff;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+.btn-ghost:hover { background: rgba(26,92,255,0.12); box-shadow: 0 0 12px rgba(26,92,255,0.2); }
+
+
+/* ── Nav ─────────────────────────────────────────────────────────────────────── */
+.nav-link {
+  color: #4a6fa5;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: none;
+  border: none;
+}
+.nav-link:hover { color: #1a5cff; background: rgba(26,92,255,0.08); }
+.nav-link.active { color: #1a5cff; font-weight: 600; }
+
+.sidebar-link {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 24px;
+  color: #4a6fa5;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  border: none; background: none;
+  width: 100%; text-align: left;
+  transition: all 0.2s;
+  border-right: 2px solid transparent;
+}
+.sidebar-link:hover { color: #fff; background: rgba(26,92,255,0.06); }
+.sidebar-link.active {
+  color: #1a5cff;
+  background: rgba(26,92,255,0.08);
+  border-right-color: #1a5cff;
+}
+
+
+/* ── Upload Zone ─────────────────────────────────────────────────────────────── */
+.upload-zone {
+  border: 2px dashed #1e2d5a;
+  background: #0d1428;
+  border-radius: 16px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.upload-zone:hover,
+.upload-zone.drag { border-color: #1a5cff; box-shadow: 0 0 40px rgba(26,92,255,0.14); }
+
+
+/* ── Table ───────────────────────────────────────────────────────────────────── */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table thead tr { background: #0a0f1e; }
+.data-table th {
+  padding: 12px 20px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; font-weight: 400;
+  color: #4a6fa5; text-transform: uppercase; letter-spacing: 0.15em;
+  text-align: left; border-bottom: 1px solid #1e2d5a;
+}
+.data-table td { padding: 14px 20px; border-bottom: 1px solid rgba(30,45,90,0.5); }
+.data-table tbody tr { transition: background 0.2s; }
+.data-table tbody tr:hover { background: rgba(26,92,255,0.04); }
+
+
+/* ── Reagent/Flag Colors ─────────────────────────────────────────────────────── */
+.risk-safe    { color: #3fe486; }
+.risk-caution { color: #ffaa00; }
+.risk-danger  { color: #ff4d6a; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em;
+  border-radius: 20px;
+}
+.badge-green  { background: rgba(63,228,134,0.1);  border: 1px solid rgba(63,228,134,0.3);  color: #3fe486; }
+.badge-yellow { background: rgba(255,170,0,0.1);   border: 1px solid rgba(255,170,0,0.3);   color: #ffaa00; }
+.badge-red    { background: rgba(255,77,106,0.1);  border: 1px solid rgba(255,77,106,0.3);  color: #ff4d6a; }
+.badge-blue   { background: rgba(26,92,255,0.1);   border: 1px solid rgba(26,92,255,0.3);   color: #4d9fff; }
+
+
+/* ── Spinner ─────────────────────────────────────────────────────────────────── */
+.spinner {
+  width: 42px; height: 42px;
+  border: 3px solid #1e2d5a;
+  border-top-color: #1a5cff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+
+/* ── Status banner border ────────────────────────────────────────────────────── */
+.status-pass   { border-color: rgba(63,228,134,0.3);  background: rgba(63,228,134,0.06);  }
+.status-warn   { border-color: rgba(255,170,0,0.3);   background: rgba(255,170,0,0.06);   }
+.status-fail   { border-color: rgba(255,77,106,0.3);  background: rgba(255,77,106,0.06);  }
+
+
+/* ── Fail Status Neon ────────────────────────────────────────────────────────── */
+.fail-neon-border {
+  border: 2px solid rgba(255,77,106,0.5);
+  animation: neon-pulse 1.5s ease-in-out infinite;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────────── */
+.footer-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: 32px;
+  background: #0a0f1e;
+  border-top: 1px solid #1e2d5a;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px;
+  z-index: 60;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+}
