@@ -1,4 +1,4 @@
-# 🧪 Lab-Mate — AI Protocol Auditor
+# 🧪 Lab-Mate : AI Protocol Auditor
 
 AI-powered web app auditing biotechnology lab protocols 
 for university students
