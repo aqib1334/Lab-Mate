@@ -1,7 +1,7 @@
 # 🧪 Lab-Mate : AI Protocol Auditor
 
 AI-powered web app auditing biotechnology lab protocols 
-for university students
+for university student
 
 ## 🚀 Live Demo
 👉 [Live on Hugging Face](https://huggingface.co/spaces/aqibmasood3/Lab-Mate)
