@@ -1,12 +1,12 @@
-# 🧪 Lab-Mate : AI Protocol Auditor
+# Lab-Mate : AI Protocol Auditor
 
 AI-powered web app auditing biotechnology lab protocols 
 for university student
 
-## 🚀 Live Demo
-👉 [Live on Hugging Face](https://huggingface.co/spaces/aqibmasood3/Lab-Mate)
+##  Live Demo
+ [Live on Hugging Face](https://huggingface.co/spaces/aqibmasood3/Lab-Mate)
 
-## ⚙️ Tech Stack
+##  Tech Stack
 - **AI:** Groq API (Llama 3.3-70B)
 - **Backend:** FastAPI + Python
 - **Frontend:** React.js
