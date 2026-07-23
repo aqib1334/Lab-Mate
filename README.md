@@ -12,7 +12,7 @@ for university student
 - **Frontend:** React.js
 - **Deployment:** Hugging Face Spaces
 
-## ✨ Features
+##  Feature:
 - Audits PCR, DNA Extraction, Gel Electrophoresis protocols
 - 3-layer document validation
 - Detects Critical Failure Points & safety hazards
